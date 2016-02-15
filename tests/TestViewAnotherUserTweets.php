@@ -11,7 +11,11 @@ class TestViewAnotherUserTweets extends TestCase
      * A basic functional test example.
      *
      * @return void
+     *
+     *
      */
+
+    use DatabaseMigrations;
     public function testViewAnotherTweets()
     {
         $user = factory(User::class->create(['username' => 'johndoe']));
