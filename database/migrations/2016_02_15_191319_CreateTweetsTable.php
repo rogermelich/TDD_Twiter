@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateTweetsTable extends Migration
 {
@@ -12,7 +13,12 @@ class CreateTweetsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('tweets', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->string('body');
+            $table->timestamps();
+        });
     }
 
     /**
