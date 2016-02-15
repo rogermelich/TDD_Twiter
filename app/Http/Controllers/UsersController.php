@@ -9,8 +9,9 @@ use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
 {
-    public function show()
+    public function show($username, $user)
     {
-        return view('users.show');
+        $User = User::findByUsername($username);
+        return view('users.show', ['user' => $user]);
     }
 }
