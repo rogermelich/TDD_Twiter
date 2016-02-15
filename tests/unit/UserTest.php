@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -13,7 +14,11 @@ class UserTest extends TestCase
      */
     public function testAUserCanBeFounfByUsername()
     {
-        $this->visit('/')
-            ->see('Laravel 5');
+        $createdUser = factory(User::class)->create(['username' => 'janedoe']);
+
+        $foundUser = User::findByUsername('janedoe');
+
+        $this->assetEquals($createdUser->id, $foundUser->id);
+        $this->assetEquals($createdUser->username, $foundUser->username);
     }
 }
